@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>机器人问答</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: linear-gradient(135deg, #4568dc, #b06ab3);
+      color: #333;
+      position: relative; /* 让右上角图片可定位 */
+    }
+
+    /* 右上角图片样式 */
+   .corner-image {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 100px; /* 图片宽度，可调整 */
+      height: auto;
+      z-index: 10; /* 确保在内容上方显示 */
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+   .qa-item {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+   .qa-question-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      cursor: pointer;
+    }
+
+   .qa-question {
+      font-size: 16px;
+      font-weight: 600;
+      color: #444;
+    }
+
+   .copy-btn {
+      background: #2196f3;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+   .qa-answer {
+      padding: 0 15px 15px;
+      font-size: 15px;
+      color: #666;
+      line-height: 1.5;
+      display: none;
+      word-break: break-all;
+    }
+
+   .direct-link {
+      color: #2196f3;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 5px;
+      padding: 5px 0;
+      font-weight: 500;
+    }
+
+   .direct-link:hover {
+      text-decoration: underline;
+    }
+
+   .qa-question-bar:active,.copy-btn:active {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 右上角图片：需替换为实际图片地址 -->
+  <img src="此处替换为显示'少羽牛逼'的图片地址" alt="少羽牛逼" class="corner-image">
+
+  <h1>机器人问答</h1>
+
+  <div class="qa-item">
+    <div class="qa-question-bar" onclick="toggleAnswer(this)">
+      <div class="qa-question">卡网</div>
+      <button class="copy-btn" onclick="copyText('https://buy.6zfo.cn/shop/4ZRWQOLJ', event)">复制</button>
+    </div>
+    <div class="qa-answer">
+      <p>点击下方链接可直接打开：</p>
+      <a href="https://buy.6zfo.cn/shop/4ZRWQOLJ" target="_blank" class="direct-link">https://buy.6zfo.cn/shop/4ZRWQOLJ</a>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-question-bar" onclick="toggleAnswer(this)">
+      <div class="qa-question">官方群聊</div>
+      <button class="copy-btn" onclick="copyText('294873045', event)">复制</button>
+    </div>
+    <div class="qa-answer">294873045</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-question-bar" onclick="toggleAnswer(this)">
+      <div class="qa-question">使用方法</div>
+      <button class="copy-btn" onclick="copyText('若充值渠道为4399，请确保登录游戏前的手机号验证已经通过，若未通过导致出现登录异常而不到账不予售后\n充值前游戏等级必须达到5级，不支持应用商店下载的跑酷，4399渠道必须过手机号验证后才能充值，手机号验证是登录游戏的时候才会显示，前7天不要使用稀有角色滑板打比赛，新号注册7天以上，即可防封，充之前请先卸载游戏！', event)">复制</button>
+    </div>
+    <div class="qa-answer">
+      若充值渠道为4399，请确保登录游戏前的手机号验证已经通过，若未通过导致出现登录异常而不到账不予售后<br>
+      充值前游戏等级必须达到5级，不支持应用商店下载的跑酷，4399渠道必须过手机号验证后才能充值，手机号验证是登录游戏的时候才会显示，前7天不要使用稀有角色滑板打比赛，新号注册7天以上，即可防封，充之前请先卸载游戏！
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-question-bar" onclick="toggleAnswer(this)">
+      <div class="qa-question">售后</div>
+      <button class="copy-btn" onclick="copyText('1077801989', event)">复制</button>
+    </div>
+    <div class="qa-answer">1077801989</div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-question-bar" onclick="toggleAnswer(this)">
+      <div class="qa-question">商家快手</div>
+      <button class="copy-btn" onclick="copyText('4706124267', event)">复制</button>
+    </div>
+    <div class="qa-answer">4706124267</div>
+  </div>
+
+  <script>
+    function toggleAnswer(bar) {
+      const answer = bar.nextElementSibling;
+      if (!answer.style.display || answer.style.display === 'none') {
+        answer.style.display = 'block';
+      } else {
+        answer.style.display = 'none';
+      }
+    }
+
+    function copyText(text, event) {
+      event.stopPropagation();
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = 0;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        alert('复制成功！');
+      } catch (err) {
+        alert('复制失败，请手动复制~');
+      }
+      document.body.removeChild(textarea);
+    }
+  </script>
+</body>
+
+</html>
